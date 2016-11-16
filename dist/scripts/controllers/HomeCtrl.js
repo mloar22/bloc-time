@@ -1,8 +1,8 @@
 (function () {
   
-  const SESSIONTIME = 2
-  const BREAKTIME = 1
-  const LONGBREAKTIME = 5
+  const SESSIONTIME = 1500
+  const BREAKTIME = 300
+  const LONGBREAKTIME = 1800
   
 
   function HomeCtrl($interval) {
