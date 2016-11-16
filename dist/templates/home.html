@@ -3,13 +3,11 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Timer: {{ home.currentTime | timecode}}</h1></div>
-
-
+    
     <!--  START BUTTON  -->
     <br />
     <button class='startbtn' ng-click="home.startTimer()">
       <h2> {{home.startBtn}}</h2> </button>
-
 
     <!--  STOP BUTTON  -->
     <button class='stopbtn' ng-click="home.stopTimer()">
@@ -21,7 +19,7 @@
     
 <!--    Sessions Number  -->
     <br />
-    <h2>{{home.completedSessions}}</h2>
+    <h2>Sessions Completed: {{home.completedSessions}}</h2>
     
   </div>
 </section>

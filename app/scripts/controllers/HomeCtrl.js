@@ -11,7 +11,7 @@
     var timer;
     $ctrl.status = "session"
   
-    $ctrl.completedSessions = 3
+    $ctrl.completedSessions = 0
     $ctrl.startBtn = "Start";
 
     $ctrl.startTimer = function () {
@@ -22,11 +22,6 @@
       
       timer = $interval(function () {
         if($ctrl.currentTime-- == 0){
-         
-//          insert sessions counter here after break currentTime ends
-//          $interval.numberOfSessions(function) {
-//            for (var i = 0; i < numberOfSession; i++)
-//          }
                
           
           $interval.cancel(timer)
