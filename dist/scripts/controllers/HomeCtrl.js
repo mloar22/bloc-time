@@ -1,33 +1,52 @@
 (function () {
   
+  const SESSIONTIME = 2
+  const BREAKTIME = 1
+  const LONGBREAKTIME = 5
   
-  const SESSIONTIME = 5
-  const BREAKTIME = 3
-  
+
   function HomeCtrl($interval) {
     $ctrl = this;
     $ctrl.currentTime = SESSIONTIME;
     var timer;
     $ctrl.status = "session"
-
-//What is $timeout?? can it be used instead of $interval?
   
+    $ctrl.completedSessions = 3
     $ctrl.startBtn = "Start";
 
     $ctrl.startTimer = function () {
+      
+      if(timer){
+        $interval.cancel(timer)
+      }
+      
       timer = $interval(function () {
         if($ctrl.currentTime-- == 0){
+         
+//          insert sessions counter here after break currentTime ends
+//          $interval.numberOfSessions(function) {
+//            for (var i = 0; i < numberOfSession; i++)
+//          }
+               
           
           $interval.cancel(timer)
-          
+            
           if($ctrl.status == "session"){
-            $ctrl.currentTime = BREAKTIME;  
-            $ctrl.status = "break"
+            $ctrl.completedSessions++;
+            
+            
+            if($ctrl.completedSessions == 4 ){
+              $ctrl.currentTime = LONGBREAKTIME;  
+              $ctrl.status = "break"
+            }else{
+              $ctrl.currentTime = BREAKTIME;  
+              $ctrl.status = "break"
+            }
           }else{
-            $ctrl.currentTime = SESSIONTIME;  
-            $ctrl.status = "session"          
+            $ctrl.currentTime = SESSIONTIME;
+            $ctrl.status = "session"    
+            
           }
-          
           
         }
       }, 1000)
@@ -48,10 +67,6 @@
     }
     
     }
-
-
-
-  // Number of completed sessions timer. 
 
 
   angular
