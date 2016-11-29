@@ -5,7 +5,7 @@
   const LONGBREAKTIME = 1800
   
 
-  function HomeCtrl($interval) {
+  function HomeCtrl($interval, $firebaseArray) {
     $ctrl = this;
     $ctrl.currentTime = SESSIONTIME;
     var timer;
@@ -60,12 +60,21 @@
       $interval.cancel(timer)
       $ctrl.currentTime = SESSIONTIME
     }
+    //Begin Firebase Stuff
     
+    $ctrl.tasks = $firebaseArray(firebase.database().ref().child("/tasks"));
+    $ctrl.newTask = {}
+    
+    $ctrl.addTask = () => {
+      $ctrl.tasks.$add($ctrl.newTask);
+      
+      $ctrl.newTask = {};
     }
+  }
 
 
   angular
     .module('blocTime')
-    .controller('HomeCtrl', ["$interval", HomeCtrl]);
+    .controller('HomeCtrl', ["$interval", "$firebaseArray", HomeCtrl]);
 
 })();
