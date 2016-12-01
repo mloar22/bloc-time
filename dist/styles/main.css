@@ -1,8 +1,33 @@
-html {
-  height: 100%;
-  font-size: 100%;
-}
 
 body {
+  background-image: url(../assets/images/winter.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  font-family: 'Helvetica Neue';
+  font-weight: 200;
+  min-height: 100%;
+  padding-bottom: 200px;
+  color: dimgray;
+}
+
+h1.timer-display {
+  margin:auto;
+  font-size: 95px;
+  font-weight: 300;
+  
+}
+
+h2.sessions-completed {
+  font-size: 45px;
+  font-weight: 200;
+  
+}
+
+div.tasks {
+  font-size: 25px;
+  color: navy;
+  font-weight: 250px;
   
 }

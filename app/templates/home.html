@@ -1,42 +1,23 @@
-<section>
-  <!--  TIMER Display  -->
-  <div>
-    <div>
-      <h1>Timer: {{ home.currentTime | timecode}}</h1></div>
-    
-    <!--  START BUTTON  -->
-    <br />
-    <button class='startbtn' ng-click="home.startTimer()">
-      <h2> {{home.startBtn}}</h2> </button>
-
-    <!--  STOP BUTTON  -->
-    <button class='stopbtn' ng-click="home.stopTimer()">
-      <h2>{{home.stopBtn}}</h2></button>
-
-    <!--  reset BUTTON  -->
-    <button class='resetbtn' ng-click="home.resetTimer()">
-      <h2>{{home.resetBtn}}</h2></button>
-    
-<!--    Sessions Number  -->
-    <br />
-    <h2>Sessions Completed: {{home.completedSessions}}</h2>
-    
+<section class="timer">
+  <div class="timer-information">
+    <h1 class='timer-display'>Timer: {{ home.currentTime | timecode }} </h1>
+     <button class='startbtn' ng-click="home.startTimer()"><h2> {{home.startBtn}}</h2></button>
+     <button class='stopbtn' ng-click="home.stopTimer()"><h2>{{home.stopBtn}}</h2></button>
+     <button class='resetbtn' ng-click="home.resetTimer()"><h2>{{home.resetBtn}}</h2></button>
+     <button class='testbtn' ng-click="home.testSound()"><h1> {{ home.testBtn }}</h1></button>
+    <h2 class='sessions-completed'>Sessions Completed: {{home.completedSessions}}</h2>
   </div>
 </section>
 
-
-<section>
-  
-  <form>
-    Task: <input type="text" ng-model="home.newTask.body">
-    
-    <input type="submit" ng-click="home.addTask()"/>
-  </form>
-  
-  
-  <ul>
-    <li ng-repeat="task in home.tasks">
-      {{task.body}}
-    </li>
-  </ul>
+<section class="tasks">
+  <div class="tasks">
+    <form class="tasks-form">
+      Task:
+      <input type="text" ng-model="home.newTask.body">
+      <input type="submit" ng-click="home.addTask()"/>
+    </form>
+      <ul class=tasks-completed-list>
+        <li class='tasks-lists-complete' ng-repeat="task in home.tasks"> {{task.body}} </li>
+    </ul>
+  </div>
 </section>
