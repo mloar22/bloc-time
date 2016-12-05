@@ -17,7 +17,7 @@
       <input type="submit" ng-click="home.addTask()"/>
     </form>
       <ul class=tasks-completed-list>
-        <li class='tasks-lists-complete' ng-repeat="task in home.tasks"> {{task.body}} </li>
+        <li class='tasks-lists-complete' ng-repeat="task in home.tasks | orderBy:'-createdAt'"> {{task.body}} </li>
     </ul>
   </div>
 </section>

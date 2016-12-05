@@ -4,7 +4,7 @@
   const BREAKTIME = 300
   const LONGBREAKTIME = 1800
 
-  function HomeCtrl($interval, $firebaseArray) {
+  function HomeCtrl($interval, $firebaseArray, $scope) {
     $ctrl = this;
     $ctrl.currentTime = SESSIONTIME;
     var timer;
@@ -27,7 +27,7 @@
       timer = $interval(function () {
         if ($ctrl.currentTime-- == 0) {
 
-
+          dingDong.play();
           $interval.cancel(timer)
 
           if ($ctrl.status == "session") {
@@ -75,12 +75,16 @@
     }
 
 
-    //    Play a ding 
-    //    $ctrl.$watch('currentTime', function () {
-    //      if ($ctrl.currentTime == 0) {
-    //        dingDong.play();
-    //      }
-    //    });
+//    Play a ding - Using $Watch
+    
+//    $scope.$watch(function() {
+//      return $ctrl.currentTime
+//    }, function () {
+//      console.log(1)
+//      if ($ctrl.currentTime == 0) {
+//        dingDong.play();
+//      }
+//    });
 
 
     //  <----- Begin Firebase Stuff ------>
@@ -89,6 +93,9 @@
     $ctrl.newTask = {}
 
     $ctrl.addTask = () => {
+      
+      $ctrl.newTask.createdAt = Date.now()
+      
       $ctrl.tasks.$add($ctrl.newTask);
 
       $ctrl.newTask = {};
@@ -98,6 +105,6 @@
 
   angular
     .module('blocTime')
-    .controller('HomeCtrl', ["$interval", "$firebaseArray", HomeCtrl]);
+    .controller('HomeCtrl', ["$interval", "$firebaseArray", "$scope", HomeCtrl]);
 
 })();
